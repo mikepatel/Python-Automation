@@ -25,18 +25,20 @@ for link in soup.find_all("a"):
     #time.sleep(8)
     #soup = BeautifulSoup(response.data.decode("utf-8"))
     print(link.get("href"))
-    x = requests.get(link.get("href"))
-    time.sleep(10)
+    x = requests.get(link.get("href"), allow_redirects=True)
+    #time.sleep(10)
     d = x.text
     s = BeautifulSoup(d)
     #print(s)
     for l in s.find_all("a"):
         print(l)
         y = str(l.get("href"))
-        print(y)
+        print("Y: " + y)
         z = prefix + y
-        print(z)
-        q = requests.get(z)
-        w = q.content
-        with open(z, "wb") as f:
-            f.write(w)
+        print("Z: " + z)
+        try:
+            q = requests.get(z)
+            w = q.url
+            print("W: " + w)
+        except:
+            continue
