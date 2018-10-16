@@ -38,6 +38,7 @@ for link in soup.find_all("a"):
         print("Z: " + z)
         try:
             q = requests.get(z)
+            print("Q: " + q)
             w = q.url
             print("W: " + w)
         except:
