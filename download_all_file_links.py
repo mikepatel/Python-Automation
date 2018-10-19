@@ -37,7 +37,7 @@ for link in soup.find_all("a"):  # for each problem
             #print("K: " + str(k))
             full_problem_url = prefix + link_string
             #print("Full url for problem: " + full_problem_url)
-            q = requests.get(full_problem_url)
+            q = requests.get(full_problem_url)  # url = url for a solution file to problem
             w = q.url
             print("Url of full problem url: " + w)
             r = requests.get(w, stream=True)
@@ -53,8 +53,9 @@ for link in soup.find_all("a"):  # for each problem
         except IndexError:
             continue
 
-        except ConnectionError:
-            continue
+        except requests.exceptions.ConnectionError:
+            pass
+
 '''
 
 ####
