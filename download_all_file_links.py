@@ -14,6 +14,9 @@ prefix = "https://web.archive.org"
 # url to test
 test = "https://web.archive.org/web/20060919125641/http://www.princeton.edu/~verdu/mud/solutions/7/7.1.huaidai.ps"
 
+# convert PS to PDF
+# https://online2pdf.com/convert-ps-to-pdf
+
 #'''
 
 r = requests.get(url)  # main site = page with Table of Contents
