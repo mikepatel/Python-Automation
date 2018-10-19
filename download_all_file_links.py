@@ -41,12 +41,19 @@ for link in soup.find_all("a"):  # for each problem
             w = q.url
             print("Url of full problem url: " + w)
             r = requests.get(w, stream=True)
-            file = os.path.join(os.getcwd(), k[1])
+            if not os.path.exists("solutions"):
+                os.makedirs("solutions")
+
+            file_path = os.path.join(os.getcwd(), "solutions")
+            file = os.path.join(file_path, k[1])
             print("File: " + file)
             with open(file, "wb") as f:
                 f.write(r.content)
 
         except IndexError:
+            continue
+
+        except ConnectionError:
             continue
 '''
 
