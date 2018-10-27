@@ -36,8 +36,8 @@ counts = ["900,google.com",
 def domain_count(in_count):
     out_count = {}
 
-    for line in in_count:
-        count, domain = line.split(",")
+    for item in in_count:
+        count, domain = item.split(",")
         count = int(count)
         num_periods = domain.count(".")
 
@@ -60,7 +60,7 @@ def domain_count(in_count):
                 out_count[subdomain] += count
 
     return out_count
-        
+
 
 #
 out = domain_count(counts)  # return data structure containing number of hits per domain
